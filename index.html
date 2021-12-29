@@ -8,7 +8,40 @@
             {
                 var time = document.getElementById("time").value;
                 var distance = document.getElementById("distance").value;
-                document.getElementById("answer").innerHTML = (distance/time)*3.6
+                var ut = document.getElementById("Units").value;
+                var ud = document.getElementById("UnitsD").value;
+                var cmb = ut+ud
+                console.log(cmb)
+                console.log(time)
+                console.log(distance)
+                if (cmb="scm") {
+                    document.getElementById("answer").innerHTML = (distance/time)/27.778
+                }
+                if (cmb="skm") {
+                    document.getElementById("answer").innerHTML = (distance/time)*3600
+                }
+                if (cmb="sm") {
+                    document.getElementById("answer").innerHTML = (distance/time)*3.6
+                }
+                if (cmb="mcm") {
+                    document.getElementById("answer").innerHTML = (distance/time)/1667
+                }
+                if (cmb="mkm") {
+                    document.getElementById("answer").innerHTML = (distance/time)*60
+                }
+                if (cmb="mm") {
+                    document.getElementById("answer").innerHTML = (distance/time)/16.667
+                }
+                if (cmb="hcm") {
+                    document.getElementById("answer").innerHTML = (distance/time)/100000
+                }
+                if (cmb="hkm") {
+                    document.getElementById("answer").innerHTML = distance/time
+                    console.log("hkm")
+                }
+                if (cmb="hm") {
+                    document.getElementById("answer").innerHTML = (distance/time)/1000
+                }
             }
         </script>
     </head>
@@ -16,10 +49,20 @@
         <h2>Speed Calculator</h2>
         <p>This is a tool that is for calculating speeds</p>
         <form>
-            <label for="time">Time (s):</label><br>
-            <input type="text" id="time" name="time"><br>
-            <label for="distance">Distance (m):</label><br>
-            <input type="text" id="distance" name="distance"><br>
+            <label for="time">Time:</label><br>
+            <input type="text" id="time" name="time">
+            <select id="Units">
+                <option value="s">sec</option>
+                <option value="m">min</option>
+                <option value="h">hr</option>
+            </select><br>
+            <label for="distance">Distance:</label><br>
+            <input type="text" id="distance" name="distance">
+            <select id="UnitsD">
+                <option value="cm">cm</option>
+                <option value="m">m</option>
+                <option value="km">km</option>
+            </select><br>
             <input type="button" value="Calculate" onClick="formChanged()">
         </form>
         <br>
